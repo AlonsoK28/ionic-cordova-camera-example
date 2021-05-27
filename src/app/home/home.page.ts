@@ -52,6 +52,8 @@ export class HomePage {
       message: 'Camera is unavailable on this device',
       position: 'bottom',
       translucent: true,
+      keyboardClose: true,
+      duration: 10000,
       buttons: [
         {
           text: 'Done',
