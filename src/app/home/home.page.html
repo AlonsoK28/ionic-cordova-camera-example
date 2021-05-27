@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Example of Ionic/Cordova Camera
+      Ionic w/ Cordova camera
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -17,6 +17,6 @@
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div> -->
-  <ion-button color="primary" (click)="takePhoto()">Take Photo</ion-button>
+  <ion-button color="primary" (click)="takePhoto()"><ion-icon name="camera-outline"></ion-icon>&nbsp;Take my photo</ion-button>
   <img *ngIf="image" [src]="image">
 </ion-content>
