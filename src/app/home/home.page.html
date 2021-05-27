@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Ionic w/ Cordova camera
+      <ion-icon name="logo-ionic"></ion-icon>&nbsp;Ionic / Cordova camera
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,11 +15,14 @@
 
   <div id="container">
     <strong>Take a Photo profile</strong>
-    <p class="ion-padding">Using Camera with Cordova plug-ins <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com">Ionic Framework</a></p>
+    <p class="ion-padding">
+      Using Camera with Cordova plug-ins 
+      <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com">Ionic Framework</a>
+    </p>
     <ion-button color="primary" (click)="takePhoto()">
       <ion-icon name="camera-outline"></ion-icon>
       &nbsp;Open camera
     </ion-button>
+    <img *ngIf="image" [src]="image" class="ion-padding">
   </div>
-  <img *ngIf="image" [src]="image">
 </ion-content>
