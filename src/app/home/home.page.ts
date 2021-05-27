@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
+
+// ionic
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { ModalController } from '@ionic/angular';
+
+// components
+import { ModalCameraPageComponent } from '../modal/modal-camera-page/modal-camera-page.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +17,8 @@ export class HomePage {
   image: string;
 
   constructor( private camera: Camera,
-               private webView: WebView ) {}
+               private webView: WebView,
+               public modalController: ModalController ) {}
 
   takePhoto(){
     const options:CameraOptions = {
@@ -27,9 +34,14 @@ export class HomePage {
     .then( (data) =>{
       const base64 = 'data:image/jpeg;base64,';
       this.image = this.webView.convertFileSrc(data);
-    }), (err) => {
-      console.log('Error: ', err);
-    }
+    }, () => this.showModalCamera())
   }
-
+  
+  async showModalCamera(){
+    const modal = await this.modalController.create({
+      component: ModalCameraPageComponent,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
+  }
 }
