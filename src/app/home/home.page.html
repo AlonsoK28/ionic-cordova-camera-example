@@ -17,6 +17,9 @@
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div> -->
-  <ion-button color="primary" (click)="takePhoto()"><ion-icon name="camera-outline"></ion-icon>&nbsp;Take my photo</ion-button>
+  <ion-button color="primary" (click)="takePhoto()" expand="block">
+    <ion-icon name="camera-outline"></ion-icon>
+    &nbsp;Take my photo
+  </ion-button>
   <img *ngIf="image" [src]="image">
 </ion-content>
