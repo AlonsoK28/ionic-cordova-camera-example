@@ -13,13 +13,13 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div> -->
-  <ion-button color="primary" (click)="takePhoto()" expand="block">
-    <ion-icon name="camera-outline"></ion-icon>
-    &nbsp;Take my photo
-  </ion-button>
+  <div id="container">
+    <strong>Take a Photo profile</strong>
+    <p class="ion-padding">Using Camera with Cordova plug-ins <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com">Ionic Framework</a></p>
+    <ion-button color="primary" (click)="takePhoto()">
+      <ion-icon name="camera-outline"></ion-icon>
+      &nbsp;Open camera
+    </ion-button>
+  </div>
   <img *ngIf="image" [src]="image">
 </ion-content>
