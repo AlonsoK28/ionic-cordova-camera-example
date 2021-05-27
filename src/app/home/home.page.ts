@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ModalController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 // components
 import { ModalCameraPageComponent } from '../modal/modal-camera-page/modal-camera-page.component';
@@ -18,7 +19,8 @@ export class HomePage {
 
   constructor( private camera: Camera,
                private webView: WebView,
-               public modalController: ModalController ) {}
+               public modalController: ModalController,
+               public toastController: ToastController ) {}
 
   takePhoto(){
     const options:CameraOptions = {
@@ -34,7 +36,7 @@ export class HomePage {
     .then( (data) =>{
       const base64 = 'data:image/jpeg;base64,';
       this.image = this.webView.convertFileSrc(data);
-    }, () => this.showModalCamera())
+    }, () => this.showCameraToast())
   }
   
   async showModalCamera(){
@@ -43,5 +45,23 @@ export class HomePage {
       cssClass: 'my-custom-class'
     });
     return await modal.present();
+  }
+
+  async showCameraToast() {
+    const toast = await this.toastController.create({
+      message: 'Camera is unavailable on this device',
+      position: 'bottom',
+      translucent: true,
+      buttons: [
+        {
+          text: 'Done',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    toast.present();
   }
 }
