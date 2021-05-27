@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,14 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 export class HomePage {
   image: string;
 
-  constructor( private camera: Camera ) {}
+  constructor( private camera: Camera,
+               private webView: WebView ) {}
 
   takePhoto(){
     const options:CameraOptions = {
       allowEdit: false,
       quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.CAMERA
@@ -24,9 +26,9 @@ export class HomePage {
     this.camera.getPicture(options)
     .then( (data) =>{
       const base64 = 'data:image/jpeg;base64,';
-      this.image = `${base64}${data}`;
+      this.image = this.webView.convertFileSrc(data);
     }), (err) => {
-      console.log('Error');
+      console.log('Error: ', err);
     }
   }
 
