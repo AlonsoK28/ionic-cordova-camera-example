@@ -16,6 +16,7 @@ import { ModalCameraPageComponent } from '../modal/modal-camera-page/modal-camer
 })
 export class HomePage {
   image: string;
+  photoTaken:boolean = true;
 
   constructor( private camera: Camera,
                private webView: WebView,

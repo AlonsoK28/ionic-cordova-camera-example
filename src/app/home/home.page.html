@@ -6,23 +6,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" center text-center>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Take your Photo profile</strong>
-    <p class="ion-padding">
-      Using Camera with Cordova plug-ins 
-      <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com">Ionic Framework</a>
-    </p>
-    <ion-button color="primary" (click)="takePhoto()">
-      <ion-icon name="camera-outline"></ion-icon>
-      &nbsp;Open camera
-    </ion-button>
+  <div class="ion-text-center ion-padding">
+    <div class="take-photo" *ngIf="photoTaken">
+      <strong>Take your Photo profile</strong>
+      <p class="ion-padding">
+        Using Camera with Cordova plug-ins 
+        <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com">Ionic Framework</a>
+      </p>
+      <ion-button color="primary" (click)="takePhoto()">
+        <ion-icon name="camera-outline"></ion-icon>
+        &nbsp;Open camera
+      </ion-button>
+    </div>
     <img *ngIf="image" [src]="image" class="ion-padding">
+    <app-card *ngIf="!photoTaken"></app-card>
   </div>
+
 </ion-content>
